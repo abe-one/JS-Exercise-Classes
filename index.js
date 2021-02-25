@@ -156,6 +156,23 @@ class Instructor extends Lambdasian{
   grade(student, subject){
     return `${student.name} receives a perfect score on ${subject}`;
   };
+
+  dictatorGrade(student){
+    let changeVal = Math.ceil(Math.random() * 5);
+    if(Math.random() < .5){
+      student.grade = student.grade - changeVal;
+    }
+    else{
+      student.grade = student.grade + changeVal;
+    };
+    if(student.grade >= 100){
+      student.grade = 100;
+    }
+    else if(student.grade <= 0){
+      student.grade = 0;
+    };
+    return student.grade;
+  }
 }
   /*
     TASK 5
@@ -178,6 +195,7 @@ class Student extends Lambdasian{
     this.previousBackground = obj.previousBackground;
     this.className = obj.className;
     this.favSubjects = obj.favSubjects;
+    this.grade = 99;
   };
 
   listSubjects(){
@@ -192,6 +210,25 @@ class Student extends Lambdasian{
     return `${this.name} has begun sprint challenge on ${subject}`;
   };
 };
+
+let stu = new Student({});
+console.log(`initial grade: ` +stu.grade);
+let inny = new Instructor({});
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+console.log(inny.dictatorGrade(stu));
+
   
   /*
     TASK 6
