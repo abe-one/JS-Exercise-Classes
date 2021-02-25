@@ -195,7 +195,8 @@ class Student extends Lambdasian{
     this.previousBackground = obj.previousBackground;
     this.className = obj.className;
     this.favSubjects = obj.favSubjects;
-    this.grade = 99;
+    this.grade = 70;
+    this.favInstructor = obj.favInstructor;
   };
 
   listSubjects(){
@@ -209,25 +210,17 @@ class Student extends Lambdasian{
   sprintChallenge(subject){
     return `${this.name} has begun sprint challenge on ${subject}`;
   };
-};
 
-let stu = new Student({});
-console.log(`initial grade: ` +stu.grade);
-let inny = new Instructor({});
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
-console.log(inny.dictatorGrade(stu));
+  graduate(){
+    if(this.grade > 70){
+      return `WHAT!? ${this.name} is graduating!`;
+    }
+    else if(this.favInstructor){
+      this.favInstructor.dictatorGrade(this);
+      return `Maybe ${this.grade} is almost enough for ${this.name} to graduate soon.`
+    };
+  };
+};
 
   
   /*
@@ -267,6 +260,16 @@ class ProjectManager extends Instructor{
         + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
         + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
   */
+
+let inny = new Instructor({});
+let stu = new Student({
+  favInstructor: inny,
+  name: `Stu`
+});
+console.log(`initial grade: ` + stu.grade);
+inny.dictatorGrade(stu);
+console.log(stu.graduate());
+
 
 
   //End of Challenge
