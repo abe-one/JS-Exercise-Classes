@@ -154,7 +154,7 @@ class Instructor extends Lambdasian{
   };
 
   grade(student, subject){
-    return `${student} receives a perfect score on ${subject}`;
+    return `${student.name} receives a perfect score on ${subject}`;
   };
 }
   /*
@@ -206,9 +206,22 @@ class Student extends Lambdasian{
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
-     
- }
+class ProjectManager extends Instructor{
+  constructor(obj){
+    super(obj);
+    this.gradClassName = obj.gradClassName;
+    this.favInstructor = obj.favInstructor;
+  };
+
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  };
+
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject};`
+  };
+};
+
   /*
     STRETCH PROBLEM (no tests!)
       - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
